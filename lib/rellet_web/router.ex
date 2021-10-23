@@ -12,13 +12,8 @@ defmodule RelletWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug RelletWeb.AuthPlug
   end
-
-  # scope "/", RelletWeb do
-  #   pipe_through :browser
-
-  #   get "/", PageController, :index
-  # end
 
   scope "/accounts", RelletWeb do
     pipe_through :api
@@ -29,12 +24,6 @@ defmodule RelletWeb.Router do
     get "/:account_id/balances", AccountBalancesController, :show
     get "/:account_id/transactions", AccountTransactionController, :index
     get "/:account_id/transactions/:transaction_id", AccountTransactionController, :show
-  end
-
-  scope "/", RelletWeb do
-    pipe_through :api
-
-    get "/*path", PageController, :not_found
   end
 
   # Other scopes may use custom stacks.
@@ -56,5 +45,11 @@ defmodule RelletWeb.Router do
       pipe_through :browser
       live_dashboard "/dashboard", metrics: RelletWeb.Telemetry
     end
+  end
+
+  scope "/", RelletWeb do
+    pipe_through :api
+
+    get "/*path", PageController, :not_found
   end
 end
