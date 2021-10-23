@@ -9,7 +9,7 @@ defmodule Rellet.Application do
   def start(_type, _args) do
     children = [
       # Start the Ecto repository
-      Rellet.Repo,
+      # Rellet.Repo,
       # Start the Telemetry supervisor
       RelletWeb.Telemetry,
       # Start the PubSub system

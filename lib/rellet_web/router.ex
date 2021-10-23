@@ -14,10 +14,21 @@ defmodule RelletWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", RelletWeb do
-    pipe_through :browser
+  # scope "/", RelletWeb do
+  #   pipe_through :browser
 
-    get "/", PageController, :index
+  #   get "/", PageController, :index
+  # end
+
+  scope "/accounts", RelletWeb do
+    pipe_through :api
+
+    get "/", AccountController, :index
+    get "/:account_id", AccountController, :show
+    get "/:account_id/details", AccountDetailsController, :show
+    get "/:account_id/balances", AccountBalancesController, :show
+    get "/:account_id/transactions", AccountTransactionController, :index
+    get "/:account_id/transactions/:transaction_id", AccountTransactionController, :show
   end
 
   # Other scopes may use custom stacks.
