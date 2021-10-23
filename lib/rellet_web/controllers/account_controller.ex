@@ -5,11 +5,11 @@ defmodule RelletWeb.AccountController do
 
   def index(conn, _params) do
     accounts = Accounts.list_accounts()
-    render(conn, "index.json", accounts: accounts)
+    json(conn, accounts)
   end
 
   def show(conn, %{"account_id" => account_id}) do
     account = Accounts.get_by_id(account_id)
-    render(conn, "show.json", account: account)
+    json(conn, account)
   end
 end

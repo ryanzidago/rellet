@@ -5,7 +5,7 @@ defmodule RelletWeb.AccountTransactionController do
 
   def index(conn, %{"account_id" => account_id}) do
     account_transactions = Accounts.get_account_transactions_by_account_id(account_id)
-    render(conn, "index.json", %{account_transactions: account_transactions})
+    json(conn, account_transactions)
   end
 
   def show(conn, %{"account_id" => account_id, "transaction_id" => transaction_id}) do
@@ -15,6 +15,6 @@ defmodule RelletWeb.AccountTransactionController do
         transaction_id
       )
 
-    render(conn, "show.json", %{account_transaction: account_transaction})
+    json(conn, account_transaction)
   end
 end
