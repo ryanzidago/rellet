@@ -31,6 +31,12 @@ defmodule RelletWeb.Router do
     get "/:account_id/transactions/:transaction_id", AccountTransactionController, :show
   end
 
+  scope "/", RelletWeb do
+    pipe_through :api
+
+    get "/*path", PageController, :not_found
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", RelletWeb do
   #   pipe_through :api
