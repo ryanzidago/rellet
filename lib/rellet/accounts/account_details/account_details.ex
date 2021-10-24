@@ -17,7 +17,7 @@ defmodule Rellet.Accounts.Account.Details do
     field :routing_numbers, :map
   end
 
-  def get_account_details_by_account_id(account_id) do
+  def get_by_account_id(account_id) do
     %Account.Details{
       account_id: account_id,
       account_number: build_account_number(),

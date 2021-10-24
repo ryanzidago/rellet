@@ -9,7 +9,7 @@ defmodule RelletWeb.AccountController do
   end
 
   def show(conn, %{"account_id" => account_id}) do
-    account = Account.get_by_account_id(account_id)
+    account = Account.get_by_id(account_id)
     json(conn, account)
   end
 end

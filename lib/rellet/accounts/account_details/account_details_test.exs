@@ -3,10 +3,9 @@ defmodule Rellet.Accounts.Account.DetailsTest do
 
   alias Rellet.Accounts.Account
 
-  describe "get_account_details_by_account_id/1" do
+  describe "get_by_account_id/1" do
     test "returns an account_details for an account_id" do
-      assert account_details =
-               Account.Details.get_account_details_by_account_id("acc_l93c7g2ubk5a34pft1000")
+      assert account_details = Account.Details.get_by_account_id("acc_l93c7g2ubk5a34pft1000")
 
       assert %Account.Details{} = account_details
       assert account_details.account_id == "acc_l93c7g2ubk5a34pft1000"

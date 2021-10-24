@@ -39,9 +39,9 @@ defmodule Rellet.Accounts.AccountTest do
     assert account.type == "depository"
   end
 
-  describe "get_by_account_id/1" do
+  describe "get_by_id/1" do
     test "returns the account for the current user_id seed", %{account: account} do
-      assert %Account{} = ^account = Account.get_by_account_id(account.id)
+      assert %Account{} = ^account = Account.get_by_id(account.id)
     end
   end
 

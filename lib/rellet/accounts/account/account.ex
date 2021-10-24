@@ -28,7 +28,7 @@ defmodule Rellet.Accounts.Account do
     build_accounts(account_ids)
   end
 
-  def get_by_account_id(account_id) do
+  def get_by_id(account_id) do
     Enum.find(get_all(), &(&1.id == account_id))
   end
 
