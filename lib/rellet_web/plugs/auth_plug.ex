@@ -3,7 +3,7 @@ defmodule RelletWeb.AuthPlug do
 
   alias Rellet.RandIDGen
 
-  @secret_key_base Application.fetch_env!(:rellet, RelletWeb.Endpoint)[:secret_key_base]
+  @secret_key_base Application.compile_env!(:rellet, RelletWeb.Endpoint)[:secret_key_base]
 
   def init(opts) do
     opts
