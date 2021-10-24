@@ -1,15 +1,15 @@
 defmodule RelletWeb.AccountController do
   use RelletWeb, :controller
 
-  alias Rellet.Accounts
+  alias Rellet.Accounts.Account
 
   def index(conn, _params) do
-    accounts = Accounts.list_accounts()
+    accounts = Account.get_all()
     json(conn, accounts)
   end
 
   def show(conn, %{"account_id" => account_id}) do
-    account = Accounts.get_by_id(account_id)
+    account = Account.get_by_account_id(account_id)
     json(conn, account)
   end
 end
