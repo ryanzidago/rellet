@@ -21,7 +21,7 @@ defmodule Rellet.Accounts.Account.Details do
       account_id: account_id,
       account_number: build_account_number(),
       links: build_links(account_id),
-      routing_numbers: Account.RoutingNumbers.build()
+      routing_numbers: Account.RoutingNumbers.new()
     }
   end
 

@@ -47,20 +47,13 @@ defmodule Rellet.Accounts.Account do
       currency: "USD",
       enrollment_id: enrollment_id,
       id: account_id,
-      institution: build_institution(),
+      institution: Institution.new(),
       last_four: build_last_four(),
       links: build_links(account_id),
       name: build_account_name(),
       subtype: "checking",
       type: "depository"
     }
-  end
-
-  defp build_institution do
-    name = Enum.random(institutions())
-    id = to_snake_case(name)
-
-    %Institution{id: id, name: name}
   end
 
   defp build_last_four do
@@ -96,11 +89,5 @@ defmodule Rellet.Accounts.Account do
 
   defp transactions_link(account_id) do
     RelletWeb.Router.Helpers.account_transaction_url(Endpoint, :index, account_id)
-  end
-
-  defp to_snake_case(string) do
-    string
-    |> String.downcase()
-    |> String.replace(" ", "_")
   end
 end
