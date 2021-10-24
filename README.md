@@ -1,22 +1,19 @@
 # Rellet
 
-To start your Phoenix server:
+
+To use the Rellet API Sandbox:
 
   * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
   * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+  * Assuming you have `httpie` installed on your machine, run the following command to get a token: `$ http http://localhost/token`
+  * Now you can visit one of the following endpoints with `$ http http://localhost:4000/<endpoint> --auth <your-token>`:
+    * `/accounts`
+    * `/accounts/:account_id`
+    * `/accounts/:account_id/details`
+    * `/accounts/:account_id/balances`
+    * `/accounts/:account_id/transactions`
+    * `/accounts/:account_id/transactions/:transaction_id`
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
-
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
-
-## Learn more
-
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
 
 
 ## Stuff that helped me
