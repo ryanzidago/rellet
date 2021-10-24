@@ -10,7 +10,7 @@ defmodule RelletWeb.AuthPlugTest do
   end
 
   describe "call/2" do
-    test "authenticates and authorizes the user", %{conn: conn} do
+    test "authenticates and authorizes the user", %{conn: _conn} do
       # assert conn = AuthPlug.call(conn, [])
     end
   end

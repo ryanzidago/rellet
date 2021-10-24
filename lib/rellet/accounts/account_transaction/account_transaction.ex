@@ -13,13 +13,13 @@ defmodule Rellet.Accounts.Account.Transaction do
 
   schema "account_transactions" do
     field :account_id, :string
-    field :amount, :float
+    field :amount, :integer
     field :date, :date
     field :description, :string
     field :details, :map
     field :processing_status, :string
     field :links, :map
-    field :running_balance, :float
+    field :running_balance, :integer
     field :status, :string
     field :type, :string
   end
@@ -32,13 +32,19 @@ defmodule Rellet.Accounts.Account.Transaction do
 
   def get_all_by_account_id(account_id) do
     transaction_ids = RandIDGen.gen_transaction_ids()
-    do_build_from_n_days_ago(account_id, transaction_ids)
+    do_build_from_n_days_ago(account_id, transaction_ids, Enum.random(1_000_000..9_999_999))
+  end
+
+  def get_last_by_account_id(account_id) do
+    account_id
+    |> get_all_by_account_id()
+    |> List.first()
   end
 
   defp do_build_from_n_days_ago(
          account_id,
          transaction_ids,
-         running_balance \\ 1_000_000,
+         running_balance,
          transactions \\ [],
          n_days_ago \\ 90
        )
@@ -80,13 +86,13 @@ defmodule Rellet.Accounts.Account.Transaction do
 
     transaction = %Account.Transaction{
       account_id: account_id,
-      amount: amount,
+      amount: amount_in_cents_to_string(amount),
       date: build_date(n_days_ago),
       description: description,
       details: build_details(description),
       id: transaction_id,
       links: build_links(account_id, transaction_id),
-      running_balance: running_balance,
+      running_balance: amount_in_cents_to_string(running_balance),
       status: "posted",
       type: "card_payment"
     }
@@ -127,6 +133,10 @@ defmodule Rellet.Accounts.Account.Transaction do
   end
 
   defp build_amount do
-    Enum.random(-10..-150)
+    Enum.random(-1_000..-15_000)
+  end
+
+  defp amount_in_cents_to_string(cents) do
+    Float.to_string(cents / 10)
   end
 end
