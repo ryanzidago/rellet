@@ -12,11 +12,14 @@ defmodule RelletWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+  end
+
+  pipeline :auth do
     plug RelletWeb.AuthPlug
   end
 
   scope "/accounts", RelletWeb do
-    pipe_through :api
+    pipe_through [:api, :auth]
 
     get "/", AccountController, :index
     get "/:account_id", AccountController, :show
@@ -49,6 +52,8 @@ defmodule RelletWeb.Router do
 
   scope "/", RelletWeb do
     pipe_through :api
+
+    get "/token", TokenController, :show
 
     get "/*path", PageController, :not_found
   end
