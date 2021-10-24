@@ -1,6 +1,7 @@
 defmodule Rellet.Institutions.Institution do
   use Ecto.Schema
 
+  alias Rellet.Institutions.Institution
   import Rellet.Institutions.Institution.Data
 
   @primary_key {:id, :string, autogenerate: false}
@@ -13,7 +14,7 @@ defmodule Rellet.Institutions.Institution do
     name = Enum.random(institutions())
     id = to_snake_case(name)
 
-    %__MODULE__{name: name, id: id}
+    %Institution{name: name, id: id}
   end
 
   defp to_snake_case(string) do
