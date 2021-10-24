@@ -2,6 +2,7 @@ defmodule Rellet.Accounts.Account.Details do
   use Ecto.Schema
 
   alias Rellet.Accounts.Account
+  alias Account.RoutingNumbers
   alias RelletWeb.Endpoint
 
   import Account.Details.Data
@@ -21,7 +22,7 @@ defmodule Rellet.Accounts.Account.Details do
       account_id: account_id,
       account_number: build_account_number(),
       links: build_links(account_id),
-      routing_numbers: Account.RoutingNumbers.new()
+      routing_numbers: RoutingNumbers.new()
     }
   end
 

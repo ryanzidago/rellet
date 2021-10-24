@@ -1,13 +1,13 @@
 defmodule Rellet.Accounts do
   alias Rellet.Accounts.Account
 
-  def get_by_account_id(account_id) do
-    Account.get_by_account_id(account_id)
-  end
+  # def get_by_account_id(account_id) do
+  #   Account.get_by_account_id(account_id)
+  # end
 
-  def get_all do
-    Account.get_all()
-  end
+  # def get_all do
+  #   Account.get_all()
+  # end
 
   def get_account_details_by_account_id(account_id) do
     Account.Details.get_account_details_by_account_id(account_id)
