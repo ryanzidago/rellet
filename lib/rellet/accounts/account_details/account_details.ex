@@ -8,9 +8,8 @@ defmodule Rellet.Accounts.Account.Details do
   import Account.Details.Data
 
   @primary_key false
-  @derive {Jason.Encoder, except: [:__meta__, :user_id]}
+  @derive {Jason.Encoder, except: [:__meta__]}
   schema "account_details" do
-    field :user_id, :string
     field :account_id, :string
     field :account_number, :integer
     field :links, :map

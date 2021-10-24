@@ -9,10 +9,9 @@ defmodule Rellet.Accounts.Account do
   import Account.Data
 
   @primary_key {:id, :string, autogenerate: false}
-  @derive {Jason.Encoder, except: [:__meta__, :user_id]}
+  @derive {Jason.Encoder, except: [:__meta__]}
 
   schema "accounts" do
-    field :user_id, :string
     field :currency, :string
     field :enrollment_id, :string
     field :institution, :map
