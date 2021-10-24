@@ -31,7 +31,7 @@ defmodule Rellet.Accounts.Account.Transaction do
   end
 
   def get_all_by_account_id(account_id) do
-    transaction_ids = for _ <- 1..90, do: RandIDGen.gen_transaction_id()
+    transaction_ids = RandIDGen.gen_transaction_ids()
     do_build_from_n_days_ago(account_id, transaction_ids)
   end
 
@@ -45,10 +45,10 @@ defmodule Rellet.Accounts.Account.Transaction do
 
   defp do_build_from_n_days_ago(
          account_id,
-         [transaction_id | _transaction_ids],
+         [transaction_id],
          running_balance,
          transactions,
-         n_days_ago = 1
+         n_days_ago = 0
        ) do
     {transaction, _} = build(account_id, transaction_id, running_balance, n_days_ago)
     [transaction | transactions]

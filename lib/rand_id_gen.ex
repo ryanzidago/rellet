@@ -23,7 +23,7 @@ defmodule Rellet.RandIDGen do
   end
 
   def gen_transaction_ids do
-    for _ <- 1..90 do
+    for _ <- 0..90 do
       Rellet.RandIDGen.gen_transaction_id()
     end
   end

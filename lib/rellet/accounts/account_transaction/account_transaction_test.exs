@@ -41,8 +41,8 @@ defmodule Rellet.Accounts.Account.TransactionTest do
       assert [%Account.Transaction{} | _] = transactions
       assert length(transactions)
 
-      for n <- 1..90 do
-        assert transaction = Enum.at(transactions, n - 1)
+      for n <- 0..90 do
+        assert transaction = Enum.at(transactions, n)
         assert Date.compare(transaction.date, Date.add(Date.utc_today(), -n)) != :gt
       end
     end
