@@ -10,7 +10,8 @@ defmodule Rellet.MixProject do
       compilers: Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      test_paths: ~w(test lib)
     ]
   end
 
