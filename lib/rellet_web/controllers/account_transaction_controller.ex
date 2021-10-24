@@ -1,16 +1,16 @@
 defmodule RelletWeb.AccountTransactionController do
   use RelletWeb, :controller
 
-  alias Rellet.Accounts
+  alias Rellet.Accounts.Account
 
   def index(conn, %{"account_id" => account_id}) do
-    account_transactions = Accounts.get_all_account_transactions_by_account_id(account_id)
+    account_transactions = Account.Transaction.get_all_by_account_id(account_id)
     json(conn, account_transactions)
   end
 
   def show(conn, %{"account_id" => account_id, "transaction_id" => transaction_id}) do
     account_transaction =
-      Accounts.get_account_transaction_by_account_id_and_transaction_id(
+      Account.Transaction.get_by_account_id_and_transaction_id(
         account_id,
         transaction_id
       )

@@ -17,7 +17,6 @@ defmodule Rellet.Accounts.Account.Transaction do
     field :date, :date
     field :description, :string
     field :details, :map
-    field :processing_status, :string
     field :links, :map
     field :running_balance, :integer
     field :status, :string
