@@ -27,9 +27,9 @@ defmodule Rellet.DataCase do
     end
   end
 
-  setup tags do
-    pid = Ecto.Adapters.SQL.Sandbox.start_owner!(Rellet.Repo, shared: not tags[:async])
-    on_exit(fn -> Ecto.Adapters.SQL.Sandbox.stop_owner(pid) end)
+  setup _ do
+    # pid = Ecto.Adapters.SQL.Sandbox.start_owner!(Rellet.Repo, shared: not tags[:async])
+    # on_exit(fn -> Ecto.Adapters.SQL.Sandbox.stop_owner(pid) end)
     :ok
   end
 
